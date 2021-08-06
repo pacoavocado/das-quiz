@@ -1,22 +1,41 @@
 * {
+    background: rebeccapurple
+    margin: 0;
+    padding: 0;
     
 }
+
 body {
-    background: rebeccapurple
+
 }
 
 
 header {
-    display: inline-flex;
-    flex-wrap: nowrap;
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
-    align-items:stretch;
-    margin: 0;
-    padding: 0;
-    height: 2.5rem;
+    justify-content:space-between;
+    
+    /* margin: 2rem;
+    padding: 2rem; */
+    height: 4.5rem;
 }
 
+header h1 {
+    display: inline-flex;
+    flex-direction: row;
+    align-content: flex-start;
+    margin:0;
+
+
+}
+
+.time-left a {
+    display:inline-flex;
+    align-content: flex-end;
+    font-size: 4.5rem;
+
+}
 
 main {
     position: relative;
