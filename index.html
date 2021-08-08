@@ -11,19 +11,22 @@
     <header>
         <h1>welcome to the quiz</h1>
         <section class="time-left">
-            <a>30</a>
+            <div id="timer"></div>
         </section>
     </header>
     <main class="container">
-        <Section class="question-container">
-            <section class="question-lines">Sample Questions</section>
+        <section id="question-container" class="hide">
+            <section id="question-lines">Sample Questions</section>
             <section class="answer-button" id="answer-btn">               
                         <button class="btn">Answer 1</button>
                         <button class="btn">Answer 2</button>
                         <button class="btn">Answer 3</button>
                         <button class="btn">Answer 4</button>
-            </Section>
-        </Section>
+            </section>
+        </section>
+            <section id="question-container" class="start">
+                <button id="start-btn" class="start-btn">start</button>
+            </section>
     </main>
     <script src="assets/js/script.js"></script>
 </body>

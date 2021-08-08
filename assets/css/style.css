@@ -24,6 +24,7 @@ header {
     flex-wrap: wrap;
     justify-content: space-between;
     color: skyblue;
+    height: 30%;
 }
 
 .time-left {
@@ -47,7 +48,7 @@ main {
     align-content: space-around;
 }
 
-.question-container {
+#question-container {
     width: 780px;
     max-width: 78%;
     background-color: azure;
@@ -58,7 +59,7 @@ main {
 }
 
 
-.question-lines {
+#question-lines {
 
     display: flex;
     flex-direction: column;
@@ -69,14 +70,14 @@ main {
     color:teal;
 }
 
-.answer-button {
+#answer-btn {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 15px;
     margin: 30px;
 }
 
-.btn {
+button {
     background-color: blue;
     color: white;
     border: 2px solid black;
@@ -86,3 +87,18 @@ main {
     font-size: 25px;
     cursor: pointer;
 }
+
+.start {
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+    margin: 2px;
+
+}
+
+.hide {
+    display: none;
+}
+
