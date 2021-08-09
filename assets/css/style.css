@@ -98,6 +98,10 @@ button {
 
 }
 
+.start-btn {
+    padding: 20px 40px;
+}
+
 .hide {
     display: none;
 }

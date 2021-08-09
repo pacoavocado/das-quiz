@@ -1,9 +1,13 @@
-let startButton = document.getElementById("start-btn")
+let startButton = document.getElementById("start-button")
 let timerElement = document.getElementById("timer")
 let timerCount = document.querySelector("timer")
-let questionPool = document.getElementById("question-container")
 
+const questionContainerEl = document.getElementById("question-container")
 
+let questionEl = document.getElementById("question-lines")
+let answerButtonsEl = document.getElementById("answer-btn")
+let startBox = document.getElementById("start-container")
+let listOfQuestions, questionIndex
 
 
 
@@ -16,8 +20,73 @@ let lossCounter = 0;
 
 
 
+function startGame() {
+    startButton.classList.add("hide")
+    questionContainerEl.classList.remove("hide")
+    listOfQuestions = questions
+    questionIndex = 0
+    setNextQuestion()
+}
+
+function setNextQuestion() {
+    showQuestion(listOfQuestions[ questionIndex ]) 
+
+}
+
+function showQuestion(question) {
+    questionEl.innerText = question.question
+    questions.answers.forEach(answers => {
+        const button = document.createElement("button")
+        button.innerText = answers.text
+        button.classList.add("btn")
+        if (answers.correct) {
+        button.addEventListener("click", selectAnswer)
+        answerButtonsEl.appendChild(button)
+        }
+    })
+}
+
+function selectAnswer(e) {
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from((answerButtonsEl.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    )
+}
+
+
+
+
+const questions = [
+    {
+        question: "what is blue?",
+        answers: [
+            { text: "a color", correct: true },
+            { text: "a feeling", correct: false },
+            { text: "a smell", correct: false },
+            { text: "a emoji", correct: false }
+        ]
+    },
+    {
+        question: "what is red?",
+        answers: [
+            { text: "a feeling", correct: false },
+            { text: "a color", correct: true },
+            { text: "a feeling", correct: false },
+            { text: "a feeling", correct: false },
+        ]
+    },
+    
+    
+    
+    
+    
+]
+
 function startTimer(){
-    console.log("started")
+    console.log("timer started")
     
     timerCount = 60
         timer = setInterval(function() {
@@ -35,47 +104,10 @@ function startTimer(){
             if (timerCount === 0) {
     
                 clearInterval(timer);
-                // loseGame();
-              }
+                scoreSheet()
+                }
+            else {
+                clearInterval(timer - 10)
+            }
         }, 1000);
 }
-
-function startGame() {
-    startButton.classList.add("hide")
-    questionPool.classList.remove("hide")
-
-}
-
-
-
-
-
-
-// function winGame() {
-//     winCounter++
-//     setWins()
-// }
-
-// function loseGame() {
-//     lossCounter++
-//     setLosses()
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function nextQuestion()
-
