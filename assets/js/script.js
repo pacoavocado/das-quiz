@@ -28,9 +28,9 @@ let lossCounter = 0;
 
 function startGame() {
     startButton.classList.add("hide");
+    questionContainerEl.classList.remove("hide");
     listOfQuestions = questions.sort(() => Math.random() -.5);
     questionIndex = 0;
-    questionContainerEl.classList.remove("hide");
     nextQuestion();
 }
 
@@ -109,11 +109,24 @@ let questions = [
             { text: "a feeling", correct: false },
         ]
     },
-    
-    
-    
-    
-    
+    {
+        question: "what is red?",
+        answers: [
+            { text: "a feeling", correct: false },
+            { text: "a color", correct: true },
+            { text: "a feeling", correct: false },
+            { text: "a feeling", correct: false },
+        ]
+    },
+    {
+        question: "what is red?",
+        answers: [
+            { text: "a feeling", correct: false },
+            { text: "a color", correct: true },
+            { text: "a feeling", correct: false },
+            { text: "a feeling", correct: false },
+        ]
+    } 
 ]
 
 function startTimer(){
