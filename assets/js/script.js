@@ -1,19 +1,25 @@
 let startButton = document.getElementById("start-button")
 let timerElement = document.getElementById("timer")
 let timerCount = document.querySelector("timer")
-
-const questionContainerEl = document.getElementById("question-container")
-
+let questionContainerEl = document.getElementById("question-container")
 let questionEl = document.getElementById("question-lines")
-let answerButtonsEl = document.getElementById("answer-btn")
+let answerButtonsEl = document.getElementById("answer-button")
 let startBox = document.getElementById("start-container")
+
+
 let listOfQuestions, questionIndex
 
 
 
 startButton.addEventListener("click", startTimer)
 startButton.addEventListener("click", startGame)
-let winSenario = false;
+button.addEventListener("click", () => {
+    questionIndex++
+    nextQuestion()
+})
+
+
+
 let timer;
 let winCounter = 0;
 let lossCounter = 0;
@@ -21,45 +27,70 @@ let lossCounter = 0;
 
 
 function startGame() {
-    startButton.classList.add("hide")
-    questionContainerEl.classList.remove("hide")
-    listOfQuestions = questions
-    questionIndex = 0
-    setNextQuestion()
+    startButton.classList.add("hide");
+    listOfQuestions = questions.sort(() => Math.random() -.5);
+    questionIndex = 0;
+    questionContainerEl.classList.remove("hide");
+    nextQuestion();
 }
 
-function setNextQuestion() {
-    showQuestion(listOfQuestions[ questionIndex ]) 
-
+function nextQuestion() {
+    resetState()
+    showQuestion(listOfQuestions[ questionIndex ]) ;
+    
 }
-
 function showQuestion(question) {
-    questionEl.innerText = question.question
-    questions.answers.forEach(answers => {
-        const button = document.createElement("button")
-        button.innerText = answers.text
-        button.classList.add("btn")
+    questionEl.innerText = question.question;
+    question.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerText = answer.text;
+        button.classList.add("btn");
         if (answers.correct) {
+            button.dataset.correct = answer.correct;
+        }
         button.addEventListener("click", selectAnswer)
         answerButtonsEl.appendChild(button)
-        }
     })
+}
+
+function resetState() {
+    clearStatusClass(document.body)
+    // nextButton.classList.add("hide");
+    while (answerButtonsEl.firstChild) {
+        answerButtonsEl.removeChild(answerButtonsEl.remove.firstChild)
+    }
 }
 
 function selectAnswer(e) {
-    const selectedButton = e.target
-    const correct = selectedButton.dataset.correct
+    let selectedButton = e.target
+    let correct = selectedButton.dataset.correct
     setStatusClass(document.body, correct)
-    Array.from((answerButtonsEl.children).forEach(button => {
+    Array.from(answerButtonsEl.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
-    )
+    if (listOfQuestions.length > currentQuestionsI +1) {
+        
+    }
+    
+}
+
+function setStatusClass ( element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add("correct");
+    }
+    else{
+        element.classList.add("wrong")
+    }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove("correct");
+    element.classList.remove("wrong");
 }
 
 
-
-
-const questions = [
+let questions = [
     {
         question: "what is blue?",
         answers: [
@@ -87,16 +118,17 @@ const questions = [
 
 function startTimer(){
     console.log("timer started")
+    let winSenario = false;
     
     timerCount = 60
-        timer = setInterval(function() {
-            timerCount--;
-            timerElement.textContent = timerCount;
-            if (timerCount >= 0) {
-    
-                if (winSenario && timerCount > 0) {
-    
-                    clearInterval(timer);
+    timer = setInterval(function() {
+        timerCount--;
+        timerElement.textContent = timerCount;
+        if (timerCount >= 0) {
+            
+            if (winSenario && timerCount > 0) {
+                
+                clearInterval(timer);
                     // winGame();
                 }
             }

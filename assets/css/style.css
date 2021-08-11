@@ -42,8 +42,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content:center;
-    align-items:center;
+    /* justify-content:center;
+    align-items:center; */
     margin-top: 0;
     align-content: space-around;
 }
@@ -52,8 +52,8 @@ main {
     width: 780px;
     max-width: 78%;
     background-color: azure;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     border: 2px solid black;
     border-radius: 15px;
 }
@@ -64,10 +64,11 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items:flex-start;
     font-size: 2rem;
     font-weight: bolder;
     color:teal;
+    margin-left: 30px;
 }
 
 #answer-btn {
